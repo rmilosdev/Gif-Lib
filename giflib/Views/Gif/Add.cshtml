@@ -1,0 +1,41 @@
+﻿@model giflib.ViewModel.GifBaseViewModel
+@{
+    ViewBag.Title = "giflib | Add Gif";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("_Error")
+<div class="row">
+    <div class="col-md-12">
+
+        <h2>Upload</h2>
+        <p>
+            Upload and share your GIFs with friends and family on Facebook, Twitter, and everywhere else.
+        </p>
+        <hr />
+
+        @using (Html.BeginForm("Add", "Gif", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.Partial("_GifForm")
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="submit" type="submit">
+                        <span class="glyphicon glyphicon-save"></span> Add
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a class="cancel" href="@Url.Action("Index")" type="button">
+                        <span class="glyphicon glyphicon-remove"></span> Cancel
+                    </a>
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>
+

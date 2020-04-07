@@ -1,0 +1,37 @@
+﻿@model giflib.ViewModel.CategoryBaseViewModel
+@{
+    ViewBag.Title = "giflib | Add Category";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("_ErrorCategory")
+<div class="row">
+    <div class="col-md-12">
+        <h2>New Category</h2>
+
+        <hr />
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.Partial("_CategoryForm")
+
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="submit" type="submit">
+                        <span class="glyphicon glyphicon-save"></span> Save
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <a class="cancel" href="@Url.Action("Index")" type="button">
+                        <span class="glyphicon glyphicon-remove"></span> Cancel
+                    </a>
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>

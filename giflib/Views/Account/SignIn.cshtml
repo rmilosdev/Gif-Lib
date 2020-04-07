@@ -1,0 +1,52 @@
+﻿@model giflib.ViewModel.AccountSignInViewModel
+
+@{
+    ViewBag.Title = "Sign In";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="registerContent">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.Partial("_ErrorLogin")
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control registerInput", placeholder = "Username" })
+                </div>
+
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control registerInput", type = "password", placeholder = "Password" })
+                </div>
+
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(m => m.RememberMe) @Html.DisplayNameFor(m => m.RememberMe)
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-12">
+                <div class="pad-top">
+                    <button type="submit" class="btnRegister btn-lg margin-right">
+                        <span class="glyphicon glyphicon-save"></span> Sign In
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    }
+
+    <p style="margin-top: 50px; color: white;">
+        <strong>Don't have an account?</strong> @Html.ActionLink("Click here", "Register") to create a new account.
+    </p>
+
+</div>

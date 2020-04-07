@@ -1,0 +1,87 @@
+﻿@model giflib.ViewModel.GifDetailViewModel
+@{
+    ViewBag.Title = "giflib | Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("_Message")
+
+<div class="gif-detail container-fluid">
+    @{
+        var base64 = Convert.ToBase64String(Model.Gif.Bytes);
+        var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+    }
+    <div class="row text-center">
+        <div class="col-md-12">
+            <div class="successCopy"></div>
+        </div>
+    </div>
+    <div style="margin-top: 50px;" class="row">
+        <div class="frame col-md-6">
+            <img src="@imgSrc" alt="gif" id="gif-image" />
+            <form></form>
+        </div>
+        <div style="padding-left: 20px;" class="details col-md-6">
+            <form action="@Url.Action("Favorite", new { gifId = Model.Gif.Id })" method="post">
+                @Html.AntiForgeryToken()
+                <button style="    background: none;
+    border: none;" type="submit">
+                    <i class="fas fa-heart"></i>
+                </button><p style="display: inline;
+                                                                    font-weight: bolder;
+                                                                    margin-left: 8px;
+                                                                    position: relative;
+                                                                    top: -3px;">Favorite</p>
+            </form>
+
+            <div class="share">
+                <a class="btn right" id="copyBtn" type="button" href="#">Copy</a>
+                <span><input style="border: none;" id="inputCopy" type="text" value="http://gif.lib/@Model.Gif.Description" /></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            @* Slika uplodera i datum edit delete *@
+            <div class="col-md-1">
+                <img class="img-circle img-responsive avatar" src="~/Static/me.jpg" />
+            </div>
+            <div style="margin-top: 10px;" class="col-md-3">
+                <h4 id="gifDes">@Model.Gif.Description</h4>
+                <p>@Model.Gif.getTimeSinceUploaded() <br /> by @Model.Gif.Username</p>
+            </div>
+            @if (!Request.IsAuthenticated)
+            {
+                <div id="gifDetailOptions" style="margin-top: 15px; padding: 0;" class="col-md-4">
+                    <p style="display:inline;">Category: <a href="#">@Model.Gif.Category.Name</a></p>
+                </div>
+            }
+            else if (Model.User.UserName != HttpContext.Current.User.Identity.Name)
+            {
+                <div id="gifDetailOptions" style="margin-top: 15px; padding: 0;" class="col-md-4">
+                    <p style="display:inline;">Category: <a href="#">@Model.Gif.Category.Name</a></p>
+                </div>
+            }
+            else if (HttpContext.Current.User.IsInRole("Admin"))
+            {
+            <div id="gifDetailOptions" style="margin-top: 15px; padding: 0;" class="col-md-4">
+                <p style="display:inline;">Category: <a href="@Url.Action("Index", "Category")">@Model.Gif.Category.Name</a></p>
+                <i class="fas fa-circle"></i>
+                <p style="display:inline;"><a href="@Url.Action("Delete", "Gif", new { id = Model.Gif.Id})">Delete</a></p>
+            </div>
+            }
+            else if (Model.User.UserName == HttpContext.Current.User.Identity.Name)
+            {
+            <div id="gifDetailOptions" style="margin-top: 15px; padding: 0;" class="col-md-4">
+                <p style="display:inline;">Category: <a href="@Url.Action("Index", "Category")">@Model.Gif.Category.Name</a></p>
+                <i class="fas fa-circle"></i>
+                <p style="display:inline;"><a href="@Url.Action("Edit", new { id = Model.Gif.Id})">Edit</a></p>
+                <i class="fas fa-circle"></i>
+                <p style="display:inline;"><a href="@Url.Action("Delete", "Gif", new { id = Model.Gif.Id})">Delete</a></p>
+            </div>
+            }
+
+        </div>
+    </div>
+</div>
+

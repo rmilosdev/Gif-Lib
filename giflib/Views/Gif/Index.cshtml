@@ -1,0 +1,47 @@
+﻿@model  List<giflib.Models.Gif>
+@{
+    ViewBag.Title = "giflib | Gifs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        @Html.Partial("_Message")
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12" style="margin-top: 50px; margin-bottom: 0;">
+        @using (Html.BeginForm("Index", "Gif", FormMethod.Get))
+        {
+            <input id="sreachInput" type="text" name="sreachInput" placeholder="Sreach all gifs..." />
+            <button id="sreachButton"><i class="fas fa-search"></i></button>
+        }
+
+    </div>
+</div>
+
+<div id="gifs" class="row">
+    @foreach (var gif in Model)
+    {
+        
+        <div class="col-md-3">
+            @{
+                var base64 = Convert.ToBase64String(gif.Bytes);
+                var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+            }
+            <div class="gif">
+                <a href="@Url.Action("Detail", new { id = gif.Id })">
+                    <img src="@imgSrc" />
+                    @using (Html.BeginForm("Favorite", "Gif", FormMethod.Post, new { id = "favoriteForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="gifId" value="@gif.Id" />
+                        <button class='@(gif.Favorite ? "unfavorite" : "favorite")' type="submit"></button>
+                    }
+                </a>
+            </div>
+        </div>
+
+    }
+</div>
+

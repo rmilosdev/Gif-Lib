@@ -1,0 +1,41 @@
+﻿@model  List<giflib.Models.User>
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Users</h2>
+        <hr />
+    </div>
+</div>
+
+<div id="gifs" class="row text-center">
+    <table class="table table-bordered table-dark">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Username</th>
+                <th scope="col">Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <th scope="row">@user.Id</th>
+                    <td>@user.UserName</td>
+                    <td>
+                        @using (Html.BeginForm("Delete", "Account", FormMethod.Get))
+                        {
+                            <input type="hidden" name="userId" value="@user.Id" />
+                            <button id="deleteCategoryButton" type="submit"><span id="deleteUserButton" class="glyphicon glyphicon-trash"></span></button>
+                        }
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

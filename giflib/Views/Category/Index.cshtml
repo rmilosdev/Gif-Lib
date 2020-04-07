@@ -1,0 +1,48 @@
+﻿@model  List<giflib.Models.Category>
+@{
+    ViewBag.Title = "giflib | Categories";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        @Html.Partial("_Message")
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Categories</h2>
+        <div id="plus">
+            <a href="@Url.Action("Add")"><i class="fas fa-plus"></i></a>
+        </div>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    @foreach (var category in Model)
+    {
+        <div class="col-md-3">
+            <div class="card" style="background-color: @category.ColorCode; ">
+                <div class="card-content">
+                    <div class="card-title">
+                        <a class="name" href="#">@category.Name</a>
+                        @using (Html.BeginForm("Edit", "Category", FormMethod.Get))
+                        {
+                            @Html.AntiForgeryToken();
+                            <input type="hidden" name="categoryId" value="@category.Id" />
+                            <button style="background: none;
+border: none;" class="edit" type="submit">
+                                <i class="fas fa-ellipsis-h"></i>
+                            </button>
+                        }
+                    </div>
+                    @using (Html.BeginForm("Delete", "Category", FormMethod.Get))
+                    {
+                        <input type="hidden" name="categoryId" value="@category.Id"/>
+                        <button id="deleteCategoryButton" type="submit"><span id="categoryDeleteButton" class="glyphicon glyphicon-trash"></span></button>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

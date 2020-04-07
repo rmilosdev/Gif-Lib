@@ -1,0 +1,38 @@
+﻿@model List<giflib.Models.Gif>
+@{
+    ViewBag.Title = "MyList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>My List</h2>
+        <hr />
+    </div>
+</div>
+
+<div id="gifs" class="row">
+    @foreach (var gif in Model)
+    {
+
+        <div class="col-md-3">
+            @{
+                var base64 = Convert.ToBase64String(gif.Bytes);
+                var imgSrc = string.Format("data:image/gif;base64,{0}", base64);
+            }
+            <div class="gif">
+                <a href="@Url.Action("Detail", "Gif",  new { id = gif.Id })">
+                    <img src="@imgSrc" />
+                    @using (Html.BeginForm("Favorite", "Gif", FormMethod.Post, new { id = "favoriteForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="gifId" value="@gif.Id" />
+                        <button class='@(gif.Favorite ? "unfavorite" : "favorite")' type="submit"></button>
+                    }
+                </a>
+            </div>
+        </div>
+
+    }
+</div>
+

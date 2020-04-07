@@ -1,0 +1,38 @@
+﻿@model giflib.Models.User
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Delete Category</h2>
+        <hr />
+    </div>
+</div>
+
+<div class="row text-center">
+    <div class="col-md-12">
+        <div class="warningTempMessage">
+            Are you sure you want to delete the user @Model.UserName?
+            All gifs that belongs to the user will be deleted also.
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm("DeleteUser", "Account", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <input type="hidden" value="@Model.Id" name="userId"/>
+    <div class="pad-top">
+        <button type="submit" class="btn btn-danger btn-lg margin-right">
+            <span class="glyphicon glyphicon-trash"></span> Delete
+        </button>
+        <a href="@Url.Action("Index", "Category")" class="btn btn-warning btn-lg">
+            <span class="glyphicon glyphicon-remove"></span> Cancel
+        </a>
+    </div>
+}
+
+

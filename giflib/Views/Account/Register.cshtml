@@ -1,0 +1,43 @@
+﻿@model giflib.ViewModel.AccountRegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutAuth.cshtml";
+}
+
+<div class="registerContent">
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.Partial("_ErrorAuth")
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control registerInput", placeholder = "Username" })
+                </div>
+
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.Password, new { @class = "form-control registerInput", type = "password", placeholder = "Password" })
+                </div>
+
+                <div class="form-group">
+                    @Html.TextBoxFor(m => m.ConfirmPassword, new { @class = "form-control registerInput", type = "password", placeholder = "Confirm Password" })
+                </div>
+
+            </div>
+
+            <div class="col-md-12">
+                <div class="pad-top">
+                    <button  type="submit" class="btnRegister btn-lg margin-right">
+                        <span class="glyphicon glyphicon-save"></span> Register
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+

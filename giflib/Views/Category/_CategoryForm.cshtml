@@ -1,0 +1,12 @@
+﻿@model giflib.ViewModel.CategoryBaseViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        @Html.TextBoxFor(m => m.Category.Name, new { @class = "form-control", placeholder = "Category Name" })
+    </div>
+
+    <div class="col-md-12">
+        @Html.DropDownListFor(m => m.Category.ColorCode,
+       new SelectList(Model.Colors, "Value", "Key"), new { @class = "form-control selectCategoryColor"})
+    </div>
+</div>

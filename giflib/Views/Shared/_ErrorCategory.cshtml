@@ -1,0 +1,12 @@
+﻿@model giflib.ViewModel.CategoryBaseViewModel
+<div class="row text-center">
+    <div class="col-md-12">
+        @{
+            if (!ViewData.ModelState.IsValid)
+            {
+                @Html.ValidationSummary(Model.FileErrorMessage + " And the following errors were found:", new { @class = "errorTempMessage" })
+            }
+           
+        }
+    </div>
+</div>

@@ -1,0 +1,74 @@
+﻿@helper GetButtonVisibility(string controller, string action = null)
+{
+    if ((string)ViewContext.RouteData.Values["controller"] == controller &&
+        (action == null || (string)ViewContext.RouteData.Values["action"] == action))
+    {
+        <text>hidden</text>
+    }
+    else
+    {
+        <text>visible</text>
+    }
+}
+
+    <div class="navbar-collapse collapse">
+        @if (Request.IsAuthenticated)
+        {
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Upload", "Add", "Gif", new { style = "visibility: " + @GetButtonVisibility("Gif", "Add") + "" })</li>
+            <li>@Html.ActionLink("Explore", "Index", "Gif")</li>
+            @if (User.IsInRole("Admin"))
+            {
+                <li>@Html.ActionLink("Categories", "Index", "Category")</li>
+                <li>@Html.ActionLink("Users", "Users", "Account")</li>
+       
+            }
+            <li>@Html.ActionLink("Favorites", "Favorites", "Gif")</li>
+            <li>@Html.ActionLink("My List", "MyList", "Account")</li>
+        </ul>
+            using (Html.BeginForm("SignOut", "Account", FormMethod.Post, new { @class = "navbar-right" }))
+            {
+                @Html.AntiForgeryToken()
+                <button id="signOutButton" type="submit" class="navbar-btn">
+                    <span class="glyphicon glyphicon-log-out"></span> Sign Out
+                </button>
+            }
+            if (this.User.IsInRole("Admin"))
+            {
+                <h5 id="identityName" class="navbar-text navbar-right">
+
+                    Hello Admin <span style="font-weight: bolder;">@User.Identity.Name</span>!
+                </h5>
+            }
+            else
+            {<h5 id="identityName" class="navbar-text navbar-right">
+
+    Hello <span style="font-weight: bolder;">@User.Identity.Name</span>!
+</h5>
+            }
+
+
+        }
+        else
+        {
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Explore", "Index", "Gif")</li>
+            </ul>
+            <div class="navbar-right">
+
+                <a class="authButtons" href="@Url.Action("Register", "Account")"
+                   style="visibility: @GetButtonVisibility("Account")">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span id="authBtnText">Register</span>
+                </a>
+
+                <a class="authButtons" href="@Url.Action("SignIn", "Account")"
+                   style="visibility: @GetButtonVisibility("Account")">
+                    <span class="glyphicon glyphicon-log-in"></span>
+                    <span id="authBtnText">Sign In</span>
+                </a>
+
+            </div>
+        }
+
+    </div>

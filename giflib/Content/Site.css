@@ -1,0 +1,560 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800,900&display=swap');
+@import url('../webfonts/');
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body, html {
+    background-color: black;
+    
+}
+
+.navbar-inverse{
+    background-color: #000000 !important;
+}
+
+.navbar-brand img {
+    margin-top: -12px;
+    height: 50px;
+}
+.nav li {
+    font-weight: bolder !important;
+    margin-left: 15px;
+    transition: .3s ease-in;
+    height: 45px;
+}
+
+.nav li a{
+    color: white !important; 
+    padding-bottom: 5px;
+    text-decoration: none;
+    border-bottom: 5px solid;
+    border-image-source: linear-gradient(to right, #E546B8, #7B29CA);
+    border-image-slice: 1;
+
+}
+
+.nav li:hover {
+    background-image: linear-gradient(to right, #E546B8, #7B29CA)
+}
+
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: #000000;
+    color: white;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.form-control{
+    border-radius: 0;
+    border: 0;
+    height: 40px; 
+}
+
+select:active, input:active, select:focus, input:focus {
+    outline: 0px !important;
+    -webkit-appearance: none;
+    box-shadow: none !important;
+}
+
+option{
+  font-weight: bolder;
+  margin-top: 7px;
+}
+
+.submit {
+    width: 280px;
+    background-color: #6157FF;
+    border: 0;
+    padding: 12px 8px;
+    margin: 15px auto;
+}
+
+.cancel {
+    width: 280px !important;
+    background-color: #000000;
+    border: 0;
+    padding: 12px 8px;
+    margin: 15px auto;
+    color: white;
+    text-decoration-line: none;
+    text-decoration: none !important;
+}
+
+.cancel:hover{
+    color:white;
+}
+
+.form-control{
+    margin-top:15px;
+}
+
+#plus {
+    width: 50px;
+    float: right;
+    position: relative;
+    top: -40px;
+    font-size: 35px;
+    left: -30px;
+}
+
+#plus a{
+    color: white;
+}
+
+#plus a:hover{
+    color:white;
+}
+
+.card {
+    box-shadow: none;
+    border-radius: 4px;
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+}
+
+.card .card-content {
+    padding: 60px 10px;
+}
+
+.card .card-title {
+    text-align: center;
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+
+.card .card-title a {
+    color: #fefefe;
+    display: block;
+    text-decoration: none;
+    line-height: 2rem;
+}
+
+.edit i {
+    padding: 2px 15px;
+    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.file-wrapper {
+    background: white;
+    padding: 0;
+    width: 280px;
+    margin-top: 15px;
+}
+
+.file-wrapper:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+input[type=file] {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+label.button {
+    background: #6157FF;
+    color: white;
+    padding: 1rem 1.4rem;
+    float: right;
+    margin: 0;
+    cursor: pointer;
+}
+
+.file-wrapper .placeholder {
+    display: inline-block;
+    padding: 1rem;
+    color: #886ab2;
+    font-size: 1.2rem;
+}
+.gif{
+    margin-top: 30px;
+}
+.gif img {
+    height: 220px;
+    width: 100%;
+    border-radius: 6px;
+}
+
+.loader {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    position: absolute;
+    z-index: 200000;
+}
+
+.frame {
+    background-color: white;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+#gif-image {
+    padding: 20px;
+    display: block;
+    min-width: 100% !important;
+    max-width: 570px !important;
+    height: 437.5px !important;
+    max-height: 100% !important;
+}
+
+.avatar {
+    max-width: 70px;
+    height: auto;
+    margin-top: 15px;
+}
+
+#gifDes {
+    font-size: 19px;
+    font-weight: 800;
+    background: -webkit-linear-gradient( #E546B8, #7B29CA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.fa-circle {
+    font-size: 4px;
+    position: relative;
+    top: -2px;
+    background: -webkit-linear-gradient( #E546B8, #7B29CA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.fa-heart {
+    font-size: 23px; 
+    background: -webkit-linear-gradient( #E546B8, #7B29CA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.fa-heart:hover {
+    animation: fa-beat 5s ease infinite;
+    background: -webkit-linear-gradient( #E546B8, #7B29CA);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#gifDetailOptions a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#gifDetailOptions a:hover {
+    color: white;
+}
+
+.favorite {
+    position: absolute;
+    top: 0;
+    right: 0.75rem;
+    display: block;
+    height: 60px;
+    width: 60px;
+    z-index: 100;
+    border-radius: 0 6px 0 0;
+}
+
+
+
+#favoriteForm {
+    position: relative;
+    top: -220px;
+    left: 6px;
+    right: 0;
+}
+
+.favorite {
+    background: url(../Static/favorite.png) no-repeat 0 0;
+}
+
+.unfavorite {
+    background: url(../Static/unfavorite.png) no-repeat 0 0;
+    float: right;
+    position: absolute;
+    left: 196px;
+}
+
+#favoriteForm button {
+    width: 67px;
+    height: 52px;
+    border: 0;
+}
+
+.details{
+    font-size: 16px;
+}
+
+
+.share {
+    border: none;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    margin-top: 8px;
+    background-color: white;
+}
+
+.share .btn {
+    background-color: #6B61FF;
+    box-shadow: none;
+    text-transform: none;
+    border-radius: none;
+    color: white;
+}
+
+.share span {
+    color: black;
+    line-height: 36px;
+}
+
+
+.successTempMessage, .warningTempMessage, .errorTempMessage {
+    font-size: 16px;
+    width: 100%;
+    display: inline-block;
+    font-weight: bolder;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.warningTempMessage {
+    background-color: #EAC734;
+    color: #8E6514;
+    margin-bottom: 20px;
+}
+
+.successTempMessage {
+    background-color: #00FF99;
+    color: white;
+}
+
+.errorTempMessage {
+    background-color: #ED4545;
+    color: #932A2A;
+}
+
+#registerBody {
+    background:linear-gradient(rgba(49, 49, 49, 0.6),
+                               rgba(49, 49, 49, 0.6)), 
+        url('../Static/background.gif');
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    background-repeat: no-repeat;
+}
+
+#registerTitle {
+    position: relative;
+    font-weight: bold;
+    font-size: 25px;
+    top: -30px;
+    left: 160px;
+    color: white;
+}
+
+.registerContainer{
+    position:relative;
+    top: 70px;
+}
+
+.registerContent {
+    text-align: center;
+    background-image: linear-gradient(to right, #E546B8, #7B29CA);
+    margin-top: 160px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    padding: 20px;
+    margin-bottom: 160px; 
+    z-index: 1000000;
+}
+
+.btnRegister {
+    background-color: #2E2E2E;
+    border: 0;
+    color: white;
+    font-weight: bolder;
+    border-radius: 0;
+}
+
+.registerInput{
+    min-width: 360px !important;
+    max-width: 360px !important;
+}
+
+.authButtons {
+    display: inline-block;
+    visibility: visible;
+    color: white;
+    background-color: #3E3E3E;
+    margin: 15px;
+  
+}
+
+.authButtons:hover {
+    color: white;
+    text-decoration: none;
+    text-decoration-line: none;
+}
+
+.authButtons span {
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+.authButtons .glyphicon {
+    background-color: #515151;
+    float: left;
+    padding: 8px;
+}
+
+#authBtnText {
+    padding: 20px;
+    /* margin-top: 10px; */
+    position: relative;
+    top: 4px;
+}
+
+#signOutButton {
+    background-color: #2E2E2E;
+    border: 0;
+    color: white;
+    font-weight: bolder;
+    border-radius: 0;
+    padding: 10px;
+}
+
+#identityName {
+    margin-top: 20px;
+    margin-right: 10px;
+    color: white;
+    font-size: 18px;
+}
+
+#sreachInput {
+    min-width: 50%;
+    margin: 0 auto;
+    display: block;
+    padding: 10px 40px;
+    border: 0;
+    color: black;
+    font-weight: bolder;
+}
+
+#sreachButton {
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    top: -40px;
+    right: -311px;
+    padding: 10px 20px;
+    background-image: linear-gradient(to right, #E546B8, #5600a8);
+    border: 0;
+    background-size: 300%;
+    animation: bg-sreachButton 2s infinite alternate;
+}
+
+#categoryDeleteButton {
+    font-weight: bolder;
+    background-color: #ED5A5A;
+    padding: 8px;
+    text-align: center;
+    border-radius: 100%;
+    margin: 0;
+    position: relative;
+    top: -115px;
+    right: -210px;
+}
+
+#deleteCategoryButton{
+    border: 0;
+    background: 0;
+}
+
+#sreachButton i {
+    color: white;
+    font-weight: bolder;
+}
+
+#deleteUserButton {
+    background-color: #ED5A5A;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+@keyframes bg-sreachButton {
+    0%{
+        background-position: right;
+    }
+    100%{
+        background-position: left;
+    }
+}
+
+@keyframes fa-beat {
+    0% {
+        transform: scale(1);
+    }
+
+    5% {
+        transform: scale(1.25);
+    }
+
+    20% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    35% {
+        transform: scale(1.25);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    55% {
+        transform: scale(1.25);
+    }
+
+    70% {
+        transform: scale(1);
+    }
+}

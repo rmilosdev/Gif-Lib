@@ -1,0 +1,22 @@
+﻿@model giflib.ViewModel.GifBaseViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        @Html.TextBoxFor(m => m.Gif.Description, new { @class = "form-control", placeholder = "Description" })
+    </div>
+    <div class="col-md-12">
+        <div class="file-wrapper">
+            <input type="file" id="file" name="file" />
+            <span class="placeholder" data-placeholder="Choose an image...">Choose an image...</span>
+            <label for="file" class="button">Browse</label>
+        </div>
+        @*<div class="file-wrapper">*@
+            @*<span class="placeholder" data-placeholder="Choose an image...">Choose an image...</span>
+            <label for="file" class="button">Browse</label>*@
+        @*</div>*@
+    </div>
+    <div class="col-md-12">
+       @Html.DropDownListFor(m => m.Gif.CategoryId,
+       Model.categorySelectListItems,"", new { @class = "form-control selectCategoryColor", placeholder = "Select a Category"})
+    </div>
+</div>
